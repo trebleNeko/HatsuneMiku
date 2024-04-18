@@ -150,16 +150,35 @@ void HatsuneMikuAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
     // the samples and the outer loop is handling the channels.
     // Alternatively, you can process the samples with the channels
     // interleaved by keeping the same state.
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
+    
+    /*for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
 
         // ..do something to the data...
+        
+        //loop through all the samples in each channel
         for(int sample = 0; sample < buffer.getNumSamples(); ++sample) {
+            //make twice as loud
+            //channelData[sample] *= 2.0;
+            
+            //volume slider
             channelData[sample] = buffer.getSample(channel, sample) * rawVolume;
+        }
+     }*/
+    //my audio block object
+    juce::dsp::AudioBlock<float> block (buffer);
+    
+    //my DSP block
+    for(int channel = 0; channel < block.getNumChannels(); ++channel) {
+        auto* channelData = block.getChannelPointer(channel);
+            
+        for(int sample = 0; sample < block.getNumSamples(); ++sample) {
+            channelData[sample] *= 4.0;
         }
     }
 }
+
 
 //==============================================================================
 bool HatsuneMikuAudioProcessor::hasEditor() const
