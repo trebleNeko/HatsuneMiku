@@ -14,7 +14,8 @@
 //==============================================================================
 /**
 */
-class HatsuneMikuAudioProcessorEditor  : public juce::AudioProcessorEditor
+class HatsuneMikuAudioProcessorEditor  : public juce::AudioProcessorEditor,
+                                         public juce::Slider::Listener
 {
 public:
     HatsuneMikuAudioProcessorEditor (HatsuneMikuAudioProcessor&);
@@ -23,11 +24,14 @@ public:
     //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
+    void sliderValueChanged (juce::Slider* slider) override;
 
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     HatsuneMikuAudioProcessor& audioProcessor;
+    
+    juce::Slider gainSlider;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HatsuneMikuAudioProcessorEditor)
 };

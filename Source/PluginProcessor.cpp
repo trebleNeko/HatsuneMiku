@@ -155,6 +155,9 @@ void HatsuneMikuAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
         auto* channelData = buffer.getWritePointer (channel);
 
         // ..do something to the data...
+        for(int sample = 0; sample < buffer.getNumSamples(); ++sample) {
+            channelData[sample] = buffer.getSample(channel, sample) * rawVolume;
+        }
     }
 }
 
@@ -182,6 +185,7 @@ void HatsuneMikuAudioProcessor::setStateInformation (const void* data, int sizeI
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
 }
+
 
 //==============================================================================
 // This creates new instances of the plugin..

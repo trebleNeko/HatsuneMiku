@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="Tg9cAY" name="HatsuneMiku" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="MikuJam">
   <MAINGROUP id="BY3JnO" name="HatsuneMiku">
     <GROUP id="{1DD868B0-6C51-C427-FF7F-B8B1C2BA80C2}" name="Source">
       <FILE id="hDxgha" name="PluginProcessor.cpp" compile="1" resource="0"
